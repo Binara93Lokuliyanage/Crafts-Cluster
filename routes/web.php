@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\Back\AdminController;
+use App\Http\Controllers\Back\MentorController;
 use App\Http\Controllers\Front\PageViewController;
 use Illuminate\Support\Facades\Route;
+use App\Models\Mentor;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,7 +30,7 @@ Route::get('/dashboard', function () {
 require __DIR__.'/auth.php';
 
 Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
-// Route::get('/mentor/dashboard', [MentorController::class, 'dashboard'])->name('mentor.dashboard');
+Route::get('/mentor/dashboard', [MentorController::class, 'dashboard'])->name('mentor.dashboard');
 // Route::get('/student/dashboard', [StudentController::class, 'dashboard'])->name('student.dashboard');
 
 
@@ -44,3 +46,18 @@ Route::delete('/admin/course/delete/{id}', [AdminController::class, 'deleteCours
 Route::patch('/admin/course/update/{id}', [AdminController::class, 'updateCourse'])->name('admin.course.update');
 Route::get('/admin/course/add', [AdminController::class, 'addCourse'])->name('admin.course.add');
 Route::post('/admin/course/store', [AdminController::class, 'storeCourse'])->name('admin.course.store');
+
+Route::get('/mentor/mentor-courses', [MentorController::class, 'mentorCourses'])->name('mentor.courses');
+Route::get('/admin/mentor-courses/{id}/edit', [MentorController::class, 'edit'])->name('admin.mentor.course.edit');
+Route::patch('/admin/mentor-courses/{id}', [MentorController::class, 'update'])->name('admin.mentor.course.update');
+Route::get('/admin/mentor-courses/{mentor_course}/lessons', [MentorController::class, 'index'])
+    ->name('admin.mentor.course.lessons.index');
+Route::get('admin/mentor-course/{mentorCourse}/lesson/{lesson}/edit', [MentorController::class, 'editLesson'])->name('admin.lesson.edit');
+Route::patch('admin/mentor-course/{mentorCourse}/lesson/{lesson}', [MentorController::class, 'updateLesson'])->name('admin.lesson.update');
+Route::post('/admin/mentor-courses', [MentorController::class, 'store'])->name('admin.mentor.course.store');
+Route::get('/admin/mentor-courses/add', [MentorController::class, 'add'])->name('admin.mentor.course.add');
+
+
+
+
+

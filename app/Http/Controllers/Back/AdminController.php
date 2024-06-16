@@ -14,7 +14,14 @@ class AdminController extends Controller
     //
     public function dashboard()
     {
-        return view('admin.admin-dashboard');
+
+        $userId = auth()->id();
+
+   
+        $user = User::find($userId);
+        $userType = $user->type;
+
+        return view('admin.admin-dashboard', ['userType' => $userType]);
     }
 
     public function mentorRequest()

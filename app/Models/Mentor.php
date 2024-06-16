@@ -22,4 +22,9 @@ class Mentor extends Model
     {
         return $this->hasOne(MentorWallet::class);
     }
+
+    public function mentorCourses()
+    {
+        return $this->hasMany(MentorCourse::class);
+    }
 }

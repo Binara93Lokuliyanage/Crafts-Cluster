@@ -383,6 +383,16 @@ p+p{
     flex-direction: column;
     border-radius: 15px;
     overflow: hidden;
+    background-color: var(--off-white);
+    padding-bottom: 3rem;
+    position: relative;
+
+    .price-tag {
+        text-align: right;
+        position: absolute;
+        bottom: 1.5rem;
+        right: 1.5rem;
+    }
 }
 
 .course-card__img-wrapper {
@@ -592,6 +602,13 @@ select:focus-visible {
     max-width: 95%;
     overflow-x: auto;
 
+    .four-blocks-container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        margin-top: 2rem;;
+        gap: 1.5rem;
+    }
+
     table {
         width: 100%;
         border-collapse: collapse;
@@ -692,4 +709,35 @@ select:focus-visible {
     color: #640000;
     background-color: rgba(214, 2, 2, 0.18);
     cursor: pointer;
+}
+
+.activator-div {
+    h3 {
+        color: #640000;
+    }
+
+    background-color: rgba(214, 2, 2, 0.18);
+    padding: 4rem;
+}
+
+.lesson-cards-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+    margin-top: 2rem;
+}
+
+.lesson-card {
+    width: 100%;
+    padding: 1.5rem;
+    display: flex;
+    gap: 1.5rem;
+    background-color: rgba(223, 179, 0, 0.1);
+
+    video {
+        height: 150px;
+        width: 250px;
+        object-fit: cover;
+    }
 }
