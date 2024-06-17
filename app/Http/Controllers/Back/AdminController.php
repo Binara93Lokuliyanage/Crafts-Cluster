@@ -29,8 +29,12 @@ class AdminController extends Controller
         // Fetch mentors where status is inactive
         $inactiveMentors = Mentor::where('status', 'inactive')->get();
 
+        $userId = auth()->id();
+        $user = User::find($userId);
+        $userType = $user->type;
+
         // Pass the data to the view
-        return view('admin.mentor-request', ['mentors' => $inactiveMentors]);
+        return view('admin.mentor-request', ['mentors' => $inactiveMentors, 'userType' => $userType]);
     }
 
     public function mentors()
@@ -38,8 +42,12 @@ class AdminController extends Controller
         // Fetch mentors where status is inactive
         $activeMentors = Mentor::where('status', 'active')->get();
 
+        $userId = auth()->id();
+        $user = User::find($userId);
+        $userType = $user->type;
+
         // Pass the data to the view
-        return view('admin.mentors', ['mentors' => $activeMentors]);
+        return view('admin.mentors', ['mentors' => $activeMentors, 'userType' => $userType]);
     }
 
     public function approveMentor($id)
@@ -72,15 +80,24 @@ class AdminController extends Controller
         $courses = Course::all();
         $categories = Category::all();
 
+        $userId = auth()->id();
+        $user = User::find($userId);
+        $userType = $user->type;
+
         // Pass the data to the view
-        return view('admin.admin-courses', ['courses' => $courses, 'categories' => $categories]);
+        return view('admin.admin-courses', ['courses' => $courses, 'categories' => $categories, 'userType' => $userType]);
     }
 
     public function editCourse($id)
     {
         $course = Course::findOrFail($id);
         $categories = Category::all();
-        return view('admin.admin-course-edit', ['course' => $course, 'categories' => $categories]);
+
+        $userId = auth()->id();
+        $user = User::find($userId);
+        $userType = $user->type;
+
+        return view('admin.admin-course-edit', ['course' => $course, 'categories' => $categories, 'userType' => $userType]);
     }
 
     public function updateCourse(Request $request, $id)
@@ -131,8 +148,13 @@ class AdminController extends Controller
 
     public function addCourse()
     {
+
+        $userId = auth()->id();
+        $user = User::find($userId);
+        $userType = $user->type;
+        
         $categories = Category::all();
-        return view('admin.admin-course-add', ['categories' => $categories]);
+        return view('admin.admin-course-add', ['categories' => $categories, 'userType' => $userType]);
     }
 
     public function storeCourse(Request $request)

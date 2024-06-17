@@ -270,5 +270,61 @@ public function store(Request $request)
     return $this->mentorCourses();
 }
 
+public function storeLesson(Request $request, $mentorCourseId)
+{
+    $request->validate([
+        'title' => 'required|string|max:255',
+        'lesson' => 'required|string',
+        'video_url' => 'required|file|mimes:mp4,avi,mov,flv'
+    ]);
+
+    $materialFile = '';
+
+    if ($request->hasFile('video_url')) {
+        $uploadedFile = $request->file('video_url');
+        $materialFile = $uploadedFile->store('uploads/course-videos', 'public');
+    }
+
+    $lessonData = [
+        'mentor_course_id' => $mentorCourseId,
+        'title' => $request->title,
+        'lesson' => $request->lesson,
+        'video_url' => $materialFile ? "storage/" . $materialFile : null,
+    ];
+
+    MentorCourseLesson::create($lessonData);
+
+    $user = Auth::user();
+    $userType = $user->type;
+    $mentor = Mentor::where('user_id', $user->id)->first();
+    $status = $mentor ? $mentor->status : null;
+
+    $mentorCourse = MentorCourse::findOrFail($mentorCourseId);
+    $lessons = $mentorCourse->mentorCourseLessons;
+
+    return view('admin.mentor-course-lessons', [
+        'mentorCourse' => $mentorCourse,
+        'lessons' => $lessons,
+        'mentorStatus' => $status,
+        'userType' => $userType
+    ])->with('success', 'Lesson added successfully.');
+}
+
+public function createLesson($mentorCourseId)
+{
+    $mentorCourse = MentorCourse::findOrFail($mentorCourseId);
+
+    $user = Auth::user();
+    $userType = $user->type;
+    $mentor = Mentor::where('user_id', $user->id)->first();
+    $status = $mentor ? $mentor->status : null;
+
+    return view('admin.mentor-course-lesson-add', [
+        'mentorCourse' => $mentorCourse,
+        'mentorStatus' => $status,
+        'userType' => $userType
+    ]);
+
+}
 
 }

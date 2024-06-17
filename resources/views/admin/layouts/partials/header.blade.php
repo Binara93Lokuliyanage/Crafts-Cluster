@@ -28,6 +28,15 @@
             @endif
         @endif
 
+        @if ($userType == 'student')
+        <div class="menu-wrapper admin-menu-wrapper">
+            <a href="/dashboard" class="menu-item" id="menu-about">Dashboard</a>
+            <a href="/student/courses" class="menu-item" id="menu-courses">All Courses</a>
+            <a href="/student/purchased-courses" class="menu-item" id="menu-mentor">My Courses</a>
+            <a href="/student/student-wallet" class="menu-item" id="menu-contact">My Wallet</a>
+        </div>
+        @endif
+
 
         <div class = "menu-wrapper admin-menu-wrapper">
             <a href="/sign-up" class="menu-item-btn" id="menu-signup">Log out</a>

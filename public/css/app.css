@@ -250,6 +250,7 @@ p + p {
   color: var(--white);
   background: rgb(223, 179, 0);
   background: linear-gradient(90deg, rgb(223, 179, 0) 0%, rgb(255, 153, 0) 100%);
+  cursor: pointer;
 }
 
 .banner-divider {
@@ -384,6 +385,22 @@ p + p {
   position: absolute;
   bottom: 1.5rem;
   right: 1.5rem;
+}
+.course-card .purchase-tag {
+  position: absolute;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 80%;
+}
+.course-card .purchase-btn {
+  background-color: var(--black);
+  color: var(--white);
+  border-radius: 5px;
+  padding: 3px 10px;
+  font-size: 0.8em;
 }
 
 .course-card__img-wrapper {
@@ -707,4 +724,67 @@ select:focus-visible {
   width: 250px;
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+.wallet-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 4rem;
+}
+
+.wallet-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 2rem;
+  border: 2px solid rgba(203, 120, 76, 0.18);
+}
+.wallet-block h2 {
+  font-size: 4em;
+  text-align: right;
+  font-weight: 400;
+}
+.wallet-block a {
+  font-size: 2em;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.cart-container {
+  display: grid;
+  grid-template-columns: 550px auto;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+.cart-container .purchase-tag {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: 2rem;
+}
+.cart-container .purchase-tag h3 {
+  font-size: 3em;
+}
+
+.cart-item__img-wrapper {
+  width: 100%;
+}
+.cart-item__img-wrapper img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.cart-item__basic-details {
+  margin-top: 2rem;
+}
+
+.course-level-tag {
+  border-radius: 5px;
+  color: var(--secondary);
+}
+
+.alert-error {
+  color: #cc0000;
 }

@@ -18,7 +18,8 @@ use Illuminate\Support\Str;
                     {{ session('error') }}
                 </div>
             @endif
-            <div class="form-container">
+            <a href = "{{ route('admin.lesson.create', $mentorCourse->id) }}" class = "cta-btn" >Add New</a>
+            <div class="table-container" style = "margin-top: 1.5rem;">
                 <h3 class="text-primary">{{ $mentorCourse->title }}</h3>
                 <h4 class="text-primary">Lessons</h4>
 

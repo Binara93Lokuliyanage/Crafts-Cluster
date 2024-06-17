@@ -3,19 +3,18 @@
 @section('content')
 
     <div class="container mt-5">
-        <h2>Edit Lesson for {{ $mentorCourse->title }}</h2>
-        <form action="{{ route('admin.lesson.update', ['mentorCourse' => $mentorCourse->id, 'lesson' => $lesson->id]) }}" method="POST" enctype="multipart/form-data">
+        <h2>Add Lesson for {{ $mentorCourse->title }}</h2>
+        <form action="{{ route('admin.lesson.store', $mentorCourse->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
-            @method('PATCH')
-            
+
             <div class="form-group">
                 <label for="title">Title</label>
-                <input type="text" id="title" name="title" value="{{ old('title', $lesson->title) }}" required>
+                <input type="text" id="title" name="title" value="{{ old('title') }}" required>
             </div>
             
             <div class="form-group">
                 <label for="lesson">Lesson Content</label>
-                <textarea id="lesson" name="lesson" required>{{ old('lesson', $lesson->lesson) }}</textarea>
+                <textarea id="lesson" name="lesson" required>{{ old('lesson') }}</textarea>
             </div>
             
             <div class="form-group">
@@ -24,10 +23,8 @@
             </div>
 
             <div class="form-group form-btn-wrapper">
-                <button type="submit" class="btn btn-primary">Update Lesson</button>
+                <button type="submit" class="btn btn-primary">Add Lesson</button>
             </div>
-            
-            
         </form>
     </div>
 @endsection

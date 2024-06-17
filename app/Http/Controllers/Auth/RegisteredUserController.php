@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\Mentor;
 use App\Models\MentorWallet;
+use App\Models\Student;
+use App\Models\StudentWallet;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
@@ -23,6 +25,11 @@ class RegisteredUserController extends Controller
     public function create()
     {
         return view('auth.register');
+    }
+
+    public function createStudent()
+    {
+        return view('auth.register-student');
     }
 
     /**
@@ -51,8 +58,6 @@ class RegisteredUserController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
-
-        
 
         $user = User::create([
             'name' => $request->name,
@@ -87,6 +92,28 @@ class RegisteredUserController extends Controller
             $mentorWallet->save();
 
         } else {
+
+            $student = new Student ([
+                'first_name' => $request->name,
+                'last_name' => $request->last_name,
+                'email' => $request->email,
+                'user_id' => $user->id,
+                
+            ]);
+    
+            if ($materialFile !== '') {
+                $student['picture_url'] = "storage/".$materialFile;
+            }
+    
+            $student->save();
+
+            $studentWallet = new StudentWallet([
+                'student_id' => $student->id,
+                'remaining_amount' => 0,
+                'total_spent' => 0
+            ]);
+    
+            $studentWallet->save();
 
         }
 

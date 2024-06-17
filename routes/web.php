@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Back\AdminController;
 use App\Http\Controllers\Back\MentorController;
+use App\Http\Controllers\Back\StudentController;
 use App\Http\Controllers\Front\PageViewController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Mentor;
@@ -22,6 +23,9 @@ use App\Models\Mentor;
 // });
 
 Route::get('/', [PageViewController::class, 'showHomePage']);
+Route::get('/about', [PageViewController::class, 'showAboutPage']);
+Route::get('/courses', [PageViewController::class, 'showCoursesPage']);
+Route::get('/mentor', [PageViewController::class, 'showMentorPage']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -31,7 +35,7 @@ require __DIR__.'/auth.php';
 
 Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
 Route::get('/mentor/dashboard', [MentorController::class, 'dashboard'])->name('mentor.dashboard');
-// Route::get('/student/dashboard', [StudentController::class, 'dashboard'])->name('student.dashboard');
+Route::get('/student/dashboard', [StudentController::class, 'dashboard'])->name('student.dashboard');
 
 
 Route::get('/admin/mentor-request', [AdminController::class, 'mentorRequest'])->name('admin.mentor-request');
@@ -56,6 +60,25 @@ Route::get('admin/mentor-course/{mentorCourse}/lesson/{lesson}/edit', [MentorCon
 Route::patch('admin/mentor-course/{mentorCourse}/lesson/{lesson}', [MentorController::class, 'updateLesson'])->name('admin.lesson.update');
 Route::post('/admin/mentor-courses', [MentorController::class, 'store'])->name('admin.mentor.course.store');
 Route::get('/admin/mentor-courses/add', [MentorController::class, 'add'])->name('admin.mentor.course.add');
+Route::get('admin/mentor-course/{mentorCourse}/lessons/create', [MentorController::class, 'createLesson'])->name('admin.lesson.create');
+Route::post('admin/mentor-course/{mentorCourse}/lessons', [MentorController::class, 'storeLesson'])->name('admin.lesson.store');
+
+
+Route::get('/student/student-wallet', [StudentController::class, 'getWallet'])->name('admin.student.wallet');
+Route::get('/student/courses', [StudentController::class, 'showCourses'])->name('admin.student.courses');
+Route::get('student/courses/{course}/mentor-courses', [StudentController::class, 'showMentorCourses'])->name('student.mentor.course.index');
+
+Route::get('/cart/{mentorCourseId}', [StudentController::class, 'show'])->name('cart.show');
+Route::post('/cart/pay', [StudentController::class, 'pay'])->name('cart.pay');
+
+// web.php
+
+Route::get('/student/purchased-courses', [StudentController::class, 'purchasedCourses'])->name('student.courses.purchased');
+
+
+
+
+
 
 
 
