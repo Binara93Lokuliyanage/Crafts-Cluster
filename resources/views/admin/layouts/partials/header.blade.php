@@ -39,7 +39,15 @@
 
 
         <div class = "menu-wrapper admin-menu-wrapper">
-            <a href="/sign-up" class="menu-item-btn" id="menu-signup">Log out</a>
+            <a href="{{ route('logout') }}" class="menu-item-btn" id="menu-signup"
+   onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+    Log out
+</a>
+
+<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+    @csrf
+</form>
+
         </div>
     </div>
 </section>

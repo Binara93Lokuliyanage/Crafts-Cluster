@@ -1,6 +1,41 @@
 @extends('front.layouts.app')
 
 @section('content')
+
+<section class = "home-hero-banner-section">
+    
+    <div class = "home-hero-banner-container">
+        <div class="owl-carousel">
+            <div class = "home-banner__img-wrapper">
+                <img src="{{ asset('images/banner-2.png') }}" alt="Logo">
+                <div class = "container banner-text-container">
+                    <h1 class = "text-white">Handmade with Love <br>
+                        and a touch of Magic</h1>
+                </div>             
+            </div>
+            <div class = "home-banner__img-wrapper">
+                <img src="{{ asset('images/c1.png') }}" alt="Logo">
+                <div class = "container banner-text-container">
+                    <h1 class = "text-white">Handmade with Love <br>
+                        and a touch of Magic</h1>
+                </div> 
+            </div>
+            <div class = "home-banner__img-wrapper">
+                <img src="{{ asset('images/divider.png') }}" alt="Logo">
+                <div class = "container banner-text-container">
+                    <h1 class = "text-white">Handmade with Love <br>
+                        and a touch of Magic</h1>
+                </div> 
+            </div>
+        </div>
+    </div>
+    <div class = "container dots-container" >
+        <div class = "hero-slider-dots">
+        </div>
+    </div>
+</section>
+
+
     <section class = "banner-divider bg-gradient">
         <div class = "banner-divider__item">
             <div class = "banner-divider__item-img-wrapper">
@@ -37,51 +72,27 @@
                 <div class = "common-container__text-block">
                     <h2 class = "gradient-text">Explore Our Courses</h2>
                     <p>Unlock your creativity with our comprehensive range of craft courses designed for all skill levels. Whether you’re a beginner eager to learn the basics or an experienced crafter looking to refine your techniques, our expertly curated courses offer something for everyone.</p>
-                    <a class = "btn-primary">
-                        Read more
+                    <a href = "/courses" class = "btn-primary">
+                        All Courses
                     </a>
                 </div>
                 <div>
-                    <div class = "common-container__item-block">
-                        <div class = "course-card">
-                            <div class = "course-card__img-wrapper">
-                                <img src="{{ asset('images/c1.png') }}" alt="Logo">
+                    <div class="common-container__item-block">
+                        @foreach($courses as $course)
+                            <div class="course-card">
+                                <div class="course-card__img-wrapper">
+                                    <img src="{{ asset($course->img_url) }}" alt="{{ $course->title }}">
+                                </div>
+                                <div class="course-card__content-wrapper">
+                                    <h4 class="text-primary">
+                                        {{ $course->title }}
+                                    </h4>
+                                    <p>
+                                        {{ Str::limit($course->description, 150) }} <!-- Limit description to 150 characters -->
+                                    </p>
+                                </div>
                             </div>
-                            <div class = "course-card__content-wrapper">
-                                <h4 class = "text-primary">
-                                    Course 1
-                                </h4>
-                                <p>
-                                    Start your crafting journey with easy-to-follow tutorials that cover essential techniques and foundational skills.
-                                </p>
-                            </div>
-                        </div>
-                        <div class = "course-card">
-                            <div class = "course-card__img-wrapper">
-                                <img src="{{ asset('images/c1.png') }}" alt="Logo">
-                            </div>
-                            <div class = "course-card__content-wrapper">
-                                <h4 class = "text-primary">
-                                    Course 1
-                                </h4>
-                                <p>
-                                    Start your crafting journey with easy-to-follow tutorials that cover essential techniques and foundational skills.
-                                </p>
-                            </div>
-                        </div>
-                        <div class = "course-card">
-                            <div class = "course-card__img-wrapper">
-                                <img src="{{ asset('images/c1.png') }}" alt="Logo">
-                            </div>
-                            <div class = "course-card__content-wrapper">
-                                <h4 class = "text-primary">
-                                    Course 1
-                                </h4>
-                                <p>
-                                    Start your crafting journey with easy-to-follow tutorials that cover essential techniques and foundational skills.
-                                </p>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
                 
@@ -89,97 +100,28 @@
         </div>
     </section>
 
-    <section class = "section-padding-top section-padding-bottom">
-        <div class = "container register-cta-container">
-            <div class = "register-cta-item">
-                <div>
-                    <h3 class = "gradient-text">Become a Mentor</h3>
-                    <p class="margin-top">Register today to <br>start your teaching journey</p>
-                </div>
-                <a class = "btn-primary">
-                    Register
-                </a>
-            </div>
-            <div class = "register-cta-item">
-                <div>
-                    <h3 class = "gradient-text">Access to Education</h3>
-                    <p class="margin-top">
-                        Create an account <br>
-                        to start learning at Crafts Cluster
-                    </p>
-                </div>
-                <a class = "btn-primary">
-                    Sign up
-                </a>
-            </div>
-            
-        </div>
-    </section>
+    @include('front.components.quick-cta')
 
     <section class = "section-padding-top section-padding-bottom">
         <div class = "container">
             <h2 class = "gradient-text">Our Mentors</h2>
             
-            <div class = "our-mentors-cards-wrapper">
-                <div class = "our-mentors-card">
-                    <div class = "our-mentor-card__img-wrapper">
-                        <img src="{{ asset('images/mentor.png') }}" alt="Logo">
+            <div class="our-mentors-cards-wrapper">
+                @foreach($mentors as $mentor)
+                    <div class="our-mentors-card">
+                        <div class="our-mentor-card__img-wrapper" style="background-color: aliceblue">
+                            <img src="{{ asset($mentor->picture_url) }}" alt="{{ $mentor->first_name }} {{ $mentor->last_name }}">
+                        </div>
+                        <div class="our-mentor-card__text-wrapper">
+                            <h4 class="text-primary">
+                                {{ $mentor->first_name }} {{ $mentor->last_name }}
+                            </h4>
+                            <p>
+                                {{ Str::limit($mentor->bio, 150) }} <!-- Assuming mentors have a bio field -->
+                            </p>
+                        </div>
                     </div>
-                    <div class = "our-mentor-card__text-wrapper">
-                        <h4 class = "text-primary">
-                            Mentor Name
-                        </h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nec est at libero ullamcorper sodales.</p>
-                                <h3 class = "text-secondary" style="text-align: right">
-                                    4.7
-                                </h3>
-                    </div>
-                </div>
-
-                <div class = "our-mentors-card">
-                    <div class = "our-mentor-card__img-wrapper">
-                        <img src="{{ asset('images/mentor.png') }}" alt="Logo">
-                    </div>
-                    <div class = "our-mentor-card__text-wrapper">
-                        <h4 class = "text-primary">
-                            Mentor Name
-                        </h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nec est at libero ullamcorper sodales.</p>
-                                <h3 class = "text-secondary" style="text-align: right">
-                                    4.7
-                                </h3>
-                    </div>
-                </div>
-
-                <div class = "our-mentors-card">
-                    <div class = "our-mentor-card__img-wrapper">
-                        <img src="{{ asset('images/mentor.png') }}" alt="Logo">
-                    </div>
-                    <div class = "our-mentor-card__text-wrapper">
-                        <h4 class = "text-primary">
-                            Mentor Name
-                        </h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nec est at libero ullamcorper sodales.</p>
-                                <h3 class = "text-secondary" style="text-align: right">
-                                    4.7
-                                </h3>
-                    </div>
-                </div>
-
-                <div class = "our-mentors-card">
-                    <div class = "our-mentor-card__img-wrapper">
-                        <img src="{{ asset('images/mentor.png') }}" alt="Logo">
-                    </div>
-                    <div class = "our-mentor-card__text-wrapper">
-                        <h4 class = "text-primary">
-                            Mentor Name
-                        </h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nec est at libero ullamcorper sodales.</p>
-                                <h3 class = "text-secondary" style="text-align: right">
-                                    4.7
-                                </h3>
-                    </div>
-                </div>
+                @endforeach
             </div>
             
         </div>

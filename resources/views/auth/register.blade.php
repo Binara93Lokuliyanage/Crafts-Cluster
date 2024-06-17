@@ -58,6 +58,16 @@
 
                                     </div>
 
+                                    <div class="form-group">
+
+                                            <div class="mt-4">
+                                                <x-label for="bio" :value="__('Bio')" />
+
+                                                <textarea id="bio" class="block mt-1 w-full" 
+                                                    name="bio"  required ></textarea>
+                                            </div>
+                                    </div>
+
 
                                     <div class="form-group">
                                         <div class = "two-col">
@@ -87,6 +97,12 @@
 
                                                 <x-input id="material_file" class="block mt-1 w-full" type="file"
                                                     name="material_file" required />
+                                            </div>
+                                            <div class="mt-4">
+                                                <x-label for="picture_url" :value="__('Upload Profile Picture')" />
+
+                                                <x-input id="picture_url" class="block mt-1 w-full" type="file"
+                                                    name="picture_url" required />
                                             </div>
 
 

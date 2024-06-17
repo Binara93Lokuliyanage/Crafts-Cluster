@@ -15,7 +15,9 @@ class Mentor extends Model
         'contact',
         'resume_url',
         'email',
-        'user_id'
+        'user_id',
+        'picture_url',
+        'bio'
     ];
 
     public function wallet()

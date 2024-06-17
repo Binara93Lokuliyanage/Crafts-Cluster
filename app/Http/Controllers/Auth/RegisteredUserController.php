@@ -46,10 +46,16 @@ class RegisteredUserController extends Controller
         
 
         $materialFile = '';
+        $picture_url = '';
 
         if ($request->hasFile('material_file')) {
             $uploadedFile = $request->file('material_file');
             $materialFile = $uploadedFile->store('uploads/mentor-resume', 'public');
+        }
+
+        if ($request->hasFile('picture_url')) {
+            $uploadedFile2 = $request->file('picture_url');
+            $picture_url = $uploadedFile2->store('uploads/mentor-resume', 'public');
         }
 
 
@@ -73,11 +79,16 @@ class RegisteredUserController extends Controller
                 'contact' => $request->contact,
                 'email' => $request->email,
                 'user_id' => $user->id,
+                'bio' => $request->bio,
                 
             ]);
     
             if ($materialFile !== '') {
                 $mentor['resume_url'] = "storage/".$materialFile;
+            }
+
+            if ($picture_url !== '') {
+                $mentor['picture_url'] = "storage/".$picture_url;
             }
     
             $mentor->save();
