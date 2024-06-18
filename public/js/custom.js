@@ -16,32 +16,18 @@ $(document).ready(function () {
   });
 
   $(document).ready(function () {
-    $('.slider-section .owl-carousel').owlCarousel({
-      items: 1.5,
+    $('.testimonial-container .owl-carousel').owlCarousel({
+      items: 3,
       loop: true,
       center: true,
       margin: 24,
       autoplay: true,
       nav: false,
-      navContainer: '.success-slider .custom-nav',
+      navContainer: '',
       dots: true,
-      dotsContainer: '.slider-dots',
+      dotsContainer: '.testimonial-slider-dots',
       navText: ['<i class="fas fa-chevron-left"></i>', '<i class="fas fa-chevron-right"></i>'],
-      responsive: {
-        1440: {
-            items: 2.8 
-        },
-        900: {
-          items: 1.8
-        },
-        600: {
-          items: 1.3
-        },
-        0: {
-          items: 1.2
-        }
-
-    }
+      
     });
   });
   

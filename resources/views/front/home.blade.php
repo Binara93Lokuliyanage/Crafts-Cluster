@@ -131,4 +131,6 @@
         <img src="{{ asset('images/divider.png') }}" alt="Logo">
     </section>
 
+    @include('front.components.testimonials')
+
 @endsection

@@ -152,4 +152,10 @@
 
         </div>
     </section>
+
+    <section class = "divider-section">
+        <img src="{{ asset('images/divider.png') }}" alt="Logo">
+    </section>
+    
+    @include('front.components.testimonials')
 @endsection
