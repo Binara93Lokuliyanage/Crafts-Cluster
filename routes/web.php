@@ -23,6 +23,24 @@ use Illuminate\Support\Facades\Auth;
 //     return view('welcome');
 // });
 
+use Illuminate\Support\Facades\Storage;
+
+Route::get('/recreate-storage-link', function() {
+    $targetFolder = storage_path('app/public');
+    $linkFolder = public_path('storage');
+
+    if (is_link($linkFolder) || is_dir($linkFolder)) {
+        // Remove the existing symbolic link or directory
+        rmdir($linkFolder);
+    }
+
+    // Create the symbolic link
+    symlink($targetFolder, $linkFolder);
+
+    return 'Storage link recreated successfully';
+});
+
+
 Route::get('/', [PageViewController::class, 'showHomePage']);
 Route::get('/about', [PageViewController::class, 'showAboutPage']);
 Route::get('/courses', [PageViewController::class, 'showCoursesPage']);
