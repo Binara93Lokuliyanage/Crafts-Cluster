@@ -26,6 +26,7 @@ Route::get('/', [PageViewController::class, 'showHomePage']);
 Route::get('/about', [PageViewController::class, 'showAboutPage']);
 Route::get('/courses', [PageViewController::class, 'showCoursesPage']);
 Route::get('/mentor', [PageViewController::class, 'showMentorPage']);
+Route::get('/contact', [PageViewController::class, 'showContactPage']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -62,11 +63,15 @@ Route::post('/admin/mentor-courses', [MentorController::class, 'store'])->name('
 Route::get('/admin/mentor-courses/add', [MentorController::class, 'add'])->name('admin.mentor.course.add');
 Route::get('admin/mentor-course/{mentorCourse}/lessons/create', [MentorController::class, 'createLesson'])->name('admin.lesson.create');
 Route::post('admin/mentor-course/{mentorCourse}/lessons', [MentorController::class, 'storeLesson'])->name('admin.lesson.store');
+Route::get('/mentor/mentor-orders', [MentorController::class, 'orders'])->name('admin.mentor.orders');
+Route::get('/mentor/mentor-wallet', [MentorController::class, 'getWallet'])->name('admin.mentor.wallet');
 
 
 Route::get('/student/student-wallet', [StudentController::class, 'getWallet'])->name('admin.student.wallet');
 Route::get('/student/courses', [StudentController::class, 'showCourses'])->name('admin.student.courses');
 Route::get('student/courses/{course}/mentor-courses', [StudentController::class, 'showMentorCourses'])->name('student.mentor.course.index');
+Route::get('/courses/purchased/{studentCourseId}', [StudentController::class, 'showPurchasedCourse'])->name('courses.purchased.show');
+
 
 Route::get('/cart/{mentorCourseId}', [StudentController::class, 'show'])->name('cart.show');
 Route::post('/cart/pay', [StudentController::class, 'pay'])->name('cart.pay');

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Course;
 use App\Models\Mentor;
+use App\Models\Order;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -13,16 +14,26 @@ class AdminController extends Controller
 {
     //
     public function dashboard()
-    {
+{
+    $userId = auth()->id();
+    $user = User::find($userId);
+    $userType = $user->type;
 
-        $userId = auth()->id();
+    // Fetch the number of inactive mentor requests
+    $inactiveMentorRequests = Mentor::where('status', 'inactive')->count();
 
-   
-        $user = User::find($userId);
-        $userType = $user->type;
+    // Calculate the income from the past 7 days
+    $sevenDaysAgo = \Carbon\Carbon::now()->subDays(7);
+    $incomeLastSevenDays = Order::where('created_at', '>=', $sevenDaysAgo)
+                                ->sum('company_earning');
 
-        return view('admin.admin-dashboard', ['userType' => $userType]);
-    }
+    return view('admin.admin-dashboard', [
+        'userType' => $userType,
+        'inactiveMentorRequests' => $inactiveMentorRequests,
+        'incomeLastSevenDays' => $incomeLastSevenDays
+    ]);
+}
+
 
     public function mentorRequest()
     {

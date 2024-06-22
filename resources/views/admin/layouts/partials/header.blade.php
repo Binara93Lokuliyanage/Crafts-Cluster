@@ -5,7 +5,7 @@
         </a>
         @if ($userType == 'admin')
             <div class="menu-wrapper admin-menu-wrapper">
-                <a href="/about" class="menu-item" id="menu-about">Dashboard</a>
+                <a href="/admin/dashboard" class="menu-item" id="menu-about">Dashboard</a>
                 <a href="/admin/mentor-request" class="menu-item" id="menu-courses">Mentor Requests</a>
                 <a href="/admin/mentors" class="menu-item" id="menu-mentor">Users</a>
                 <a href="/admin/courses" class="menu-item" id="menu-contact">Courses</a>
@@ -16,10 +16,10 @@
         @if ($userType == 'mentor')
             @if ($mentorStatus == 'active')
                 <div class="menu-wrapper admin-menu-wrapper">
-                    <a href="/dashboard" class="menu-item" id="menu-about">Dashboard</a>
+                    <a href="/mentor/dashboard" class="menu-item" id="menu-about">Dashboard</a>
                     <a href="/mentor/mentor-courses" class="menu-item" id="menu-courses">My Courses</a>
-                    <a href="/mentor/my-orders" class="menu-item" id="menu-mentor">My Orders</a>
-                    <a href="/mentor/earnings" class="menu-item" id="menu-contact">Earnings</a>
+                    <a href="/mentor/mentor-orders" class="menu-item" id="menu-mentor">My Orders</a>
+                    <a href="/mentor/mentor-wallet" class="menu-item" id="menu-contact">Earnings</a>
                 </div>
             @else
                 <div class="menu-wrapper admin-menu-wrapper">
@@ -30,7 +30,7 @@
 
         @if ($userType == 'student')
         <div class="menu-wrapper admin-menu-wrapper">
-            <a href="/dashboard" class="menu-item" id="menu-about">Dashboard</a>
+            <a href="/student/dashboard" class="menu-item" id="menu-about">Dashboard</a>
             <a href="/student/courses" class="menu-item" id="menu-courses">All Courses</a>
             <a href="/student/purchased-courses" class="menu-item" id="menu-mentor">My Courses</a>
             <a href="/student/student-wallet" class="menu-item" id="menu-contact">My Wallet</a>

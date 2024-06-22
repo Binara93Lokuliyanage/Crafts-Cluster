@@ -1,5 +1,3 @@
-<!-- resources/views/courses/purchased.blade.php -->
-
 @extends('admin.layouts.app')
 
 @section('content')
@@ -22,28 +20,23 @@
        
         <div class="table-container">
 
-
-            
             <div class = "admin-title-container">
                 <h3 class = "text-primary">My Courses</h3>
             </div>
 
             <div class="four-blocks-container">
                 @forelse ($purchasedCourses as $studentCourse)
-                    
-                    <a href="" class = "course-card" >
-                        <div class = "course-card__img-wrapper">
+                    <a href="{{ route('courses.purchased.show', $studentCourse->id) }}" class="course-card">
+                        <div class="course-card__img-wrapper">
                             <img src="{{ asset($studentCourse->mentorCourse->img_url) }}" alt="Course Image">
                         </div>
-                        <div class = "course-card__content-wrapper">
+                        <div class="course-card__content-wrapper">
                             <div>
-                                <h4 class = "text-primary">
+                                <h4 class="text-primary">
                                     {{ $studentCourse->mentorCourse->title }}
                                 </h4>
                                 <p>by {{ $studentCourse->mentorCourse->mentor->first_name }} {{ $studentCourse->mentorCourse->mentor->last_name }}</p>
-                                
                             </div>
-                            
                             <p>{{ $studentCourse->mentorCourse->description }}</p>
                         </div>
                     </a>

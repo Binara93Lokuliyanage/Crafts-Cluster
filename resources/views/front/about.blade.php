@@ -32,32 +32,7 @@
     </div>
 </section>
 
-<section class = "section-padding-top section-padding-bottom">
-    <div class = "container register-cta-container">
-        <div class = "register-cta-item">
-            <div>
-                <h3 class = "gradient-text">Become a Mentor</h3>
-                <p class="margin-top">Register today to <br>start your teaching journey</p>
-            </div>
-            <a class = "btn-primary">
-                Register
-            </a>
-        </div>
-        <div class = "register-cta-item">
-            <div>
-                <h3 class = "gradient-text">Access to Education</h3>
-                <p class="margin-top">
-                    Create an account <br>
-                    to start learning at Crafts Cluster
-                </p>
-            </div>
-            <a class = "btn-primary">
-                Sign up
-            </a>
-        </div>
-        
-    </div>
-</section>
+@include('front.components.quick-cta')
 
 <section class = "section-padding-top section-padding-bottom">
     <div class = "container">

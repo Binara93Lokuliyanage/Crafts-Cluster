@@ -20,20 +20,32 @@ class StudentController extends Controller
     //
 
     public function dashboard()
-    {
-        $userId = auth()->id();
+{
+    $userId = auth()->id();
 
+    $user = User::find($userId);
+    $userType = $user->type;
 
-        $user = User::find($userId);
-        $userType = $user->type;
-
-
-        $student = Student::where('user_id', $userId)->first();
-
-        $status = "null";
-
-        return view('admin.student-dashboard', ['mentorStatus' => $status, 'userType' => $userType]);
+    $student = Student::where('user_id', $userId)->first();
+    
+    // Check if student exists
+    if ($student) {
+        $purchasedCoursesCount = StudentCourse::where('student_id', $student->id)->count();
+    } else {
+        $purchasedCoursesCount = 0;
     }
+
+    $status = "null";
+
+    return view('admin.student-dashboard', [
+        'mentorStatus' => $status, 
+        'userType' => $userType,
+        'purchasedCoursesCount' => $purchasedCoursesCount,
+        'student' => $student,
+        'user' => $user
+    ]);
+}
+
 
     public function getWallet()
     {
@@ -178,4 +190,23 @@ class StudentController extends Controller
             'userType' => $userType
         ]);
     }
+
+    public function showPurchasedCourse($studentCourseId)
+{
+    $studentCourse = StudentCourse::with('mentorCourse.mentor', 'mentorCourse.course.category', 'mentorCourse.mentorCourseLessons')
+                                  ->findOrFail($studentCourseId);
+    
+    // return view('courses.purchased-show', compact('studentCourse'));
+
+    $userId = auth()->id();
+        $user = User::find($userId);
+        $userType = $user->type;
+
+        return view('admin.student-purchased-show', [
+            'mentorCourse' => '',
+            'studentCourse' => $studentCourse,
+            'userType' => $userType
+        ]);
+}
+
 }

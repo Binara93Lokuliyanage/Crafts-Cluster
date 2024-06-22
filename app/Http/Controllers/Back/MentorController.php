@@ -7,6 +7,8 @@ use App\Models\Course;
 use App\Models\Mentor;
 use App\Models\MentorCourse;
 use App\Models\MentorCourseLesson;
+use App\Models\MentorWallet;
+use App\Models\Order;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -25,13 +27,15 @@ class MentorController extends Controller
 
         $mentor = Mentor::where('user_id', $userId)->first();
 
+        $mentorCourses = MentorCourse::where('mentor_id', $mentor->id)->count();
+
         if ($mentor) {
             $status = $mentor->status;
         } else {
             $status = null;
         }
 
-        return view('admin.mentor-dashboard', ['mentorStatus' => $status, 'userType' => $userType]);
+        return view('admin.mentor-dashboard', ['user' => $user, 'mentorStatus' => $status, 'userType' => $userType, 'mentor' => $mentor, 'mentorCourses' => $mentorCourses]);
     }
 
     public function mentorCourses()
@@ -326,5 +330,45 @@ public function createLesson($mentorCourseId)
     ]);
 
 }
+
+public function orders()
+    {
+        $userId = auth()->id();
+
+
+        $user = User::find($userId);
+        $userType = $user->type;
+
+
+        $mentor = Mentor::where('user_id', $userId)->first();
+
+        $orders = Order::where('mentor_id', $mentor->id)->get();
+
+        if ($mentor) {
+            $status = $mentor->status;
+        } else {
+            $status = null;
+        }
+
+        return view('admin.mentor-orders', ['user' => $user, 'mentorStatus' => $status, 'userType' => $userType, 'mentor' => $mentor, 'orders' => $orders]);
+    }
+
+
+    public function getWallet()
+    {
+        $userId = auth()->id();
+
+
+        $user = User::find($userId);
+        $userType = $user->type;
+
+
+        $mentor = Mentor::where('user_id', $userId)->first();
+        $wallet = MentorWallet::where('mentor_id', $mentor->id)->first();
+
+        $status = Mentor::where('user_id', $userId)->pluck('status')->first();
+
+        return view('admin.mentor-wallet', ['mentorStatus' => $status, 'userType' => $userType, 'wallet' => $wallet]);
+    }
 
 }
