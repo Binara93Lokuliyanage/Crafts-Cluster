@@ -6,6 +6,7 @@ use App\Http\Controllers\Back\StudentController;
 use App\Http\Controllers\Front\PageViewController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Mentor;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,7 +30,16 @@ Route::get('/mentor', [PageViewController::class, 'showMentorPage']);
 Route::get('/contact', [PageViewController::class, 'showContactPage']);
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    $user = Auth::user();
+    $userType = $user->type;
+
+    if ($userType == 'admin') {
+        return redirect()->route('admin.dashboard');
+    } elseif ($userType == 'mentor') {
+        return redirect()->route('mentor.dashboard');
+    } else {
+        return redirect()->route('student.dashboard');
+    }
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
