@@ -13,8 +13,8 @@
                 <h2>${{ number_format($incomeLastSevenDays, 2) }}</h2>
             </div>
             <div class="wallet-block">
-                <h4 class="text-primary">Low Balance?</h4>
-                <a href="#">Top up now</a>
+                <h4 class="text-primary">Your Business</h4>
+                <a href="/admin/business">Check Orders</a>
             </div>
         </div>
     </div>

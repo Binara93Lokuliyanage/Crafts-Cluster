@@ -79,6 +79,7 @@ Route::delete('/admin/course/delete/{id}', [AdminController::class, 'deleteCours
 Route::patch('/admin/course/update/{id}', [AdminController::class, 'updateCourse'])->name('admin.course.update');
 Route::get('/admin/course/add', [AdminController::class, 'addCourse'])->name('admin.course.add');
 Route::post('/admin/course/store', [AdminController::class, 'storeCourse'])->name('admin.course.store');
+Route::get('/admin/business', [AdminController::class, 'business'])->name('admin.business');
 
 Route::get('/mentor/mentor-courses', [MentorController::class, 'mentorCourses'])->name('mentor.courses');
 Route::get('/admin/mentor-courses/{id}/edit', [MentorController::class, 'edit'])->name('admin.mentor.course.edit');

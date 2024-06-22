@@ -898,6 +898,11 @@ select:focus-visible {
   -o-object-fit: cover;
      object-fit: cover;
 }
+.cart-item__img-wrapper video {
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
 
 .cart-item__basic-details {
   margin-top: 2rem;

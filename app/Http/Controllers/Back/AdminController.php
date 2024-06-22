@@ -9,30 +9,32 @@ use App\Models\Mentor;
 use App\Models\Order;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
+
 
 class AdminController extends Controller
 {
     //
     public function dashboard()
-{
-    $userId = auth()->id();
-    $user = User::find($userId);
-    $userType = $user->type;
+    {
+        $userId = auth()->id();
+        $user = User::find($userId);
+        $userType = $user->type;
 
-    // Fetch the number of inactive mentor requests
-    $inactiveMentorRequests = Mentor::where('status', 'inactive')->count();
+        // Fetch the number of inactive mentor requests
+        $inactiveMentorRequests = Mentor::where('status', 'inactive')->count();
 
-    // Calculate the income from the past 7 days
-    $sevenDaysAgo = \Carbon\Carbon::now()->subDays(7);
-    $incomeLastSevenDays = Order::where('created_at', '>=', $sevenDaysAgo)
-                                ->sum('company_earning');
+        // Calculate the income from the past 7 days
+        $sevenDaysAgo = \Carbon\Carbon::now()->subDays(7);
+        $incomeLastSevenDays = Order::where('created_at', '>=', $sevenDaysAgo)
+            ->sum('company_earning');
 
-    return view('admin.admin-dashboard', [
-        'userType' => $userType,
-        'inactiveMentorRequests' => $inactiveMentorRequests,
-        'incomeLastSevenDays' => $incomeLastSevenDays
-    ]);
-}
+        return view('admin.admin-dashboard', [
+            'userType' => $userType,
+            'inactiveMentorRequests' => $inactiveMentorRequests,
+            'incomeLastSevenDays' => $incomeLastSevenDays
+        ]);
+    }
 
 
     public function mentorRequest()
@@ -115,7 +117,7 @@ class AdminController extends Controller
     {
         $course = Course::find($id);
 
-        
+
 
         $materialFile = '';
 
@@ -139,10 +141,10 @@ class AdminController extends Controller
         ];
 
         if ($materialFile !== '') {
-            $courseData['img_url'] = "storage/".$materialFile;
+            $courseData['img_url'] = "storage/" . $materialFile;
         }
 
-        
+
 
         $course->update($courseData);
 
@@ -163,7 +165,7 @@ class AdminController extends Controller
         $userId = auth()->id();
         $user = User::find($userId);
         $userType = $user->type;
-        
+
         $categories = Category::all();
         return view('admin.admin-course-add', ['categories' => $categories, 'userType' => $userType]);
     }
@@ -175,14 +177,14 @@ class AdminController extends Controller
             'category_id' => 'required|exists:categories,id',
             'description' => 'required|string',
             'min_price' => 'required|numeric|min:0',
-            'max_price' => 'required|numeric|min:'.$request->min_price,
+            'max_price' => 'required|numeric|min:' . $request->min_price,
             'img_url' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         $courseData = $request->except('img_url');
-        
+
         if ($request->hasFile('img_url')) {
-            $courseData['img_url'] = "storage/".$request->file('img_url')->store('uploads/course-images', 'public');
+            $courseData['img_url'] = "storage/" . $request->file('img_url')->store('uploads/course-images', 'public');
         }
 
         Course::create($courseData);
@@ -190,4 +192,43 @@ class AdminController extends Controller
         return redirect()->route('admin.courses')->with('success', 'Course added successfully.');
     }
 
+    public function business()
+    {
+        $userId = auth()->id();
+        $user = User::find($userId);
+        $userType = $user->type;
+
+        // Get the start and end of the current month
+        $startOfMonth = Carbon::now()->startOfMonth();
+        $endOfMonth = Carbon::now()->endOfMonth();
+
+
+
+        // Fetch orders for the current month
+        $orders = Order::whereBetween('created_at', [$startOfMonth, $endOfMonth])
+            ->get();
+
+        // Calculate the income of the last month
+        $lastMonthIncome = Order::whereBetween('created_at', [$startOfMonth, $endOfMonth])
+            ->sum('company_earning');
+
+        $orders = Order::all();
+        $totalIncome = $orders->sum('company_earning');
+
+        $startOfMonth = Carbon::now()->subMonth()->startOfMonth();
+        $endOfMonth = Carbon::now()->subMonth()->endOfMonth();
+
+        // Query orders for last month
+        $lastMonthIncomereal = Order::whereBetween('created_at', [$startOfMonth, $endOfMonth])
+            ->sum('company_earning');
+
+        // Pass the data to the view
+        return view('admin.admin-business', [
+            'userType' => $userType,
+            'orders' => $orders,
+            'lastMonthIncome' => $lastMonthIncome,
+            'lastMonthIncomereal' => $lastMonthIncomereal,
+            'totalIncome' => $totalIncome
+        ]);
+    }
 }
