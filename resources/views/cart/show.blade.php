@@ -29,7 +29,7 @@
                             <img src="{{ asset($mentorCourse->img_url) }}" alt="Mentor Course Image">
                         </div>
                         <div class = "cart-item__basic-details">
-                            <h4 class="text-primary">by {{ $mentorCourse->mentor->first_name }} {{ $mentorCourse->mentor->last_name }}</h4>
+                            <h4 class="text-primary" id = "top-up-link" style="cursor: pointer">By {{ $mentorCourse->mentor->first_name }} {{ $mentorCourse->mentor->last_name }}</h4>
                             <p class="text-secondary">Specialisation: {{ $mentorCourse->course->title }}</p>
                             <p>{{ $mentorCourse->description }}</p>
                         </div>
@@ -42,7 +42,10 @@
                             </form>
                         @else
                             <div class="alert alert-error">
-                                Not enough credit.
+                                Not enough credit.<br>
+                                <a href = "/student/student-wallet">
+                                    Click here to top up your wallet now !
+                                </a>
                             </div>
                         @endif
                             <h3>$ {{ $mentorCourse->price }}</h3>
@@ -56,6 +59,7 @@
                                     <div>
                                         <h3>{{ $lesson->title }}</h3>
                                         <p>{{ Str::limit($lesson->lesson, 100) }}</p>
+                                        <p class = "text-secondary">Purchase to access the content</p>
                                     </div>
                                 </div>
                             @endforeach
@@ -65,6 +69,51 @@
 
                 
             </div>
+
+            <div id="top-up-popup" class="popup">
+                <div class="popup-content">
+                    <span class="close-btn">&times;</span>
+                    
+                    <div class = "container">
+                        <div class = "mentor-info-popup">
+                            <div class = "student-info__img-wrapper">
+                                <img src="{{ asset($mentorCourse->mentor->picture_url) }}" >
+                            </div>
+                            <div class = "student-course-info-block">
+                                <div class = "student-info__item" style="display: block;">
+                                    <h3 class= "text-primary" style=" margin-bottom: 1rem">{{ $mentorCourse->mentor->first_name }} {{ $mentorCourse->mentor->last_name }}</h3>
+                                    {{ $mentorCourse->mentor->bio }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+
         </div>
     </div>
+
+    <script>
+        $(document).ready(function() {
+            var popup = $('#top-up-popup');
+            var closeBtn = $('.close-btn');
+    
+            $('#top-up-link').click(function(event) {
+                event.preventDefault();
+                popup.show();
+            });
+    
+            closeBtn.click(function() {
+                popup.hide();
+            });
+    
+            $(window).click(function(event) {
+                if (event.target == popup[0]) {
+                    popup.hide();
+                }
+            });
+        });
+    </script>
+
 @endsection

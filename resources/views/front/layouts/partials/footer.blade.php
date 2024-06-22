@@ -7,7 +7,7 @@
             <div class = "footer-menu-wrapper">
                 <a href="/about" class="menu-item" id="menu-about">About</a>
             <a href="/courses" class="menu-item" id="menu-courses">Courses</a>
-            <a href="/mentor" class="menu-item" id="menu-mentor">Become a Mentor</a>
+            <a href="/register" class="menu-item" id="menu-mentor">Become a Mentor</a>
             <a href="/contact" class="menu-item" id="menu-contact">Contact</a>
             </div>
         </div>

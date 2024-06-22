@@ -81,6 +81,8 @@ Route::get('/student/student-wallet', [StudentController::class, 'getWallet'])->
 Route::get('/student/courses', [StudentController::class, 'showCourses'])->name('admin.student.courses');
 Route::get('student/courses/{course}/mentor-courses', [StudentController::class, 'showMentorCourses'])->name('student.mentor.course.index');
 Route::get('/courses/purchased/{studentCourseId}', [StudentController::class, 'showPurchasedCourse'])->name('courses.purchased.show');
+Route::post('/wallet/topup', [StudentController::class, 'topUp'])->name('wallet.topup');
+
 
 
 Route::get('/cart/{mentorCourseId}', [StudentController::class, 'show'])->name('cart.show');
@@ -89,6 +91,7 @@ Route::post('/cart/pay', [StudentController::class, 'pay'])->name('cart.pay');
 // web.php
 
 Route::get('/student/purchased-courses', [StudentController::class, 'purchasedCourses'])->name('student.courses.purchased');
+
 
 
 

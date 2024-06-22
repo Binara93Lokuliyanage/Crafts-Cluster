@@ -209,4 +209,20 @@ class StudentController extends Controller
         ]);
 }
 
+public function topUp(Request $request)
+    {
+        $user = Auth::user();
+        $student = Student::where('user_id', $user->id)->first();
+        $studentWallet = StudentWallet::where('student_id', $student->id)->first();
+
+       
+        
+        if ($studentWallet) {
+            $studentWallet->remaining_amount += $request->input('amount');
+            $studentWallet->save();
+        }
+
+        return redirect()->back()->with('success', 'Top-up successful!');
+    }
+
 }

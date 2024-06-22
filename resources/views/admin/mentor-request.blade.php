@@ -52,7 +52,7 @@
                                 <form action="{{ route('admin.mentor.approve', $mentor->id) }}" method="POST" style="display: inline;">
                                     @csrf
                                     @method('PATCH')
-                                    <button type="submit" class="btn btn-success">Approve</button>
+                                    <button type="submit" class="btn btn-warning">Approve</button>
                                 </form>
                                 <form action="{{ route('admin.mentor.decline', $mentor->id) }}" method="POST" style="display: inline;">
                                     @csrf
