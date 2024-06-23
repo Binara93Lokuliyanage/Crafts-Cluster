@@ -24,7 +24,7 @@
                 
                 <div class = "admin-title-container">
                     <h3 class = "text-primary">Courses</h3>
-                <div class="select-container">
+                <div class="select-container" style="display: none">
                     
                     <select id="category" name="category" onchange="changeCategory(this)">
                         <option value="">All Categories</option>

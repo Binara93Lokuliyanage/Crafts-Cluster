@@ -65,39 +65,35 @@
         </div>
     </section>
     
-    <section class = "section-padding-top section-padding-bottom">
+    <section class = "section-padding-top ">
         <div class = "container">
             <div class = "common-container">
                 <div class = "common-container__text-block">
-                    <h2 class = "gradient-text">Explore Our Courses</h2>
-                    <p>Unlock your creativity with our comprehensive range of craft courses designed for all skill levels. Whether you’re a beginner eager to learn the basics or an experienced crafter looking to refine your techniques, our expertly curated courses offer something for everyone.</p>
+                <img src="{{ asset('images/home.jpg') }}" alt="Logo" class = "home-jpg">
+                    <!-- <h2 class = "gradient-text">Explore Our Courses</h2>
+                    <p>Unlock your creativity with our comprehensive range of craft courses designed for all skill levels. Whether you’re a beginner eager to learn the basics or an experienced crafter looking to refine your techniques, our expertly curated courses offer something for everyone.</p> -->
                     <a href = "/courses" class = "btn-primary">
                         All Courses
                     </a>
                 </div>
                 <div>
-                    <div class="common-container__item-block">
-                        @foreach($courses as $course)
-                        <a href="{{ route('courses.show', $course->id) }}" class="course-card">
-                                <div class="course-card__img-wrapper">
-                                    <img src="{{ asset($course->img_url) }}" alt="{{ $course->title }}">
-                                </div>
-                                <div class="course-card__content-wrapper">
-                                    <div>
-                                        
-                                    <h4 class="text-primary">
-                                        {{ $course->title }}
-                                    </h4>
-                                    <p class = "text-secondary">{{ $course->category->name }}</p>
-                                    </div>
-                                    
-                                    <p>
-                                        {{ Str::limit($course->description, 150) }} <!-- Limit description to 150 characters -->
-                                    </p>
-                                </div>
-</a>
-                        @endforeach
+                    <div class="" class = "course-leveller">
+                    <h2 class = "gradient-text" >Explore Our Courses</h2>
+                    
+                    <div>
+                    <h4 class = "gradient-secondary" style = "margin-top: 2rem">Find Your Charm Touch in the Beginner Guide Course</h4>
+                    <p style = "margin-top: 1rem">Discover the Basics Start your crafting journey with our beginner guide course. Learn the fundamental skills and techniques that form the foundation of every great project. Our step-by-step lessons and hands-on activities will help you find your unique creative voice and charm</p>
+
+                    <h4 class = "gradient-secondary" style = "margin-top: 2rem">Ignite Your Power with Advanced Training</h4>
+                    <p style = "margin-top: 1rem">Elevate Your Craft Take your skills to the next level with our advanced training courses. Dive deeper into complex techniques and sophisticated projects designed to challenge and inspire you. Whether you’re refining your style or mastering new tools, our expert instructors are here to guide you every step of the way.</p>
+
+                    <h4 class = "gradient-secondary" style = "margin-top: 2rem">Master the Art with One-on-One Training</h4>
+                    <p style = "margin-top: 1rem">Personalized Instruction Achieve mastery with personalized, one-on-one training sessions. Work directly with our skilled artisans to receive tailored feedback and guidance. This bespoke approach ensures that your individual needs and creative goals are met, helping you become a true master of your craft.</p>
                     </div>
+
+                    
+
+                   </div>
                 </div>
                 
             </div>

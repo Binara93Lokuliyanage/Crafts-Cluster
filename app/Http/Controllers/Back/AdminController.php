@@ -116,37 +116,29 @@ class AdminController extends Controller
     public function updateCourse(Request $request, $id)
     {
         $course = Course::find($id);
+        $category = Category::find($course->category_id);
 
 
-
-        $materialFile = '';
-
-        if ($request->hasFile('img_url')) {
-            $uploadedFile = $request->file('img_url');
-            $materialFile = $uploadedFile->store('uploads/course-images', 'public');
-        }
+       
 
         $request->validate([
             'title' => 'required|string|max:255',
-            'description' => 'required|string',
-            'category_id' => 'required|exists:categories,id',
+            'description' => 'required|string'
         ]);
+
+        $categoryData = [
+            'name' => $request->title
+        ];
 
         $courseData = [
             'title' => $request->title,
-            'description' => $request->description,
-            'category_id' => $request->category_id,
-            'min_price' => $request->min_price,
-            'max_price' => $request->max_price,
+            'description' => $request->description
         ];
-
-        if ($materialFile !== '') {
-            $courseData['img_url'] = "storage/" . $materialFile;
-        }
 
 
 
         $course->update($courseData);
+        $category->update($categoryData);
 
         return redirect()->route('admin.courses')->with('success', 'Course updated successfully.');
     }
@@ -174,18 +166,23 @@ class AdminController extends Controller
     {
         $request->validate([
             'title' => 'required|string|max:255',
-            'category_id' => 'required|exists:categories,id',
-            'description' => 'required|string',
-            'min_price' => 'required|numeric|min:0',
-            'max_price' => 'required|numeric|min:' . $request->min_price,
-            'img_url' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'description' => 'required|string'
         ]);
 
-        $courseData = $request->except('img_url');
+        $categoryData = [
+            'name' => $request->title
+        ];
 
-        if ($request->hasFile('img_url')) {
-            $courseData['img_url'] = "storage/" . $request->file('img_url')->store('uploads/course-images', 'public');
-        }
+        $category = Category::create($categoryData);
+
+        $courseData = [
+            'title' => $request->title,
+            'description' => $request->description,
+            'category_id' => $category->id,
+            'min_price' => 0,
+            'max_price' => 0,
+            'img_url' => 'abc'
+        ];
 
         Course::create($courseData);
 

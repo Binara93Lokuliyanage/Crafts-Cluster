@@ -23,24 +23,17 @@
 
                 
                 <div class = "admin-title-container">
-                    <h3 class = "text-primary">I like to specialise :</h3>
+                    <h3 class = "text-primary">Choose Course Type :</h3>
                 <div class="select-container">
                     
-                    <select id="category" name="category" onchange="changeCategory(this)">
-                        <option value="">All Categories</option>
-                        @foreach($categories as $category)
-                            <option value="{{ $category->id }}">{{ $category->name }}</option>
-                        @endforeach
-                    </select>
+                    
                 </div>
                 </div>
 
                 <div class = "four-blocks-container">
                     @foreach ($courses as $course)
                     <a href="{{ route('student.mentor.course.index', $course->id) }}" class = "course-card" data-category="{{ $course->category_id }}">
-                        <div class = "course-card__img-wrapper">
-                            <img src="{{ asset($course->img_url) }}" alt="Course Image">
-                        </div>
+                        
                         <div class = "course-card__content-wrapper">
                             <div>
                                 <h4 class = "text-primary">

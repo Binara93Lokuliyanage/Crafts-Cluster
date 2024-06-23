@@ -1141,3 +1141,9 @@ select:focus-visible {
   gap: 2rem;
   grid-template-columns: 200px auto;
 }
+
+.home-jpg {
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
 use App\Models\Course;
 use App\Models\Mentor;
+use App\Models\MentorCourse;
 use Illuminate\Http\Request;
 
 class PageViewController extends Controller
@@ -25,10 +26,10 @@ class PageViewController extends Controller
     }
     public function showCoursesPage() {
         // Assuming 'category' is a field in your 'courses' table that contains 'basic', 'intermediate', and 'advanced'
-        $basicCourses = Course::where('category_id', '1')->get();
-        $intermediateCourses = Course::where('category_id', '2')->get();
-        $advancedCourses = Course::where('category_id', '3')->get();
-        $oneonone = Course::where('category_id', '4')->get();
+        $basicCourses = MentorCourse::where('course_id', '1')->get();
+        $intermediateCourses = MentorCourse::where('course_id', '2')->get();
+        $advancedCourses = MentorCourse::where('course_id', '3')->get();
+        $oneonone = MentorCourse::where('course_id', '4')->get();
     
         return view('front.courses', compact('basicCourses', 'intermediateCourses', 'advancedCourses', 'oneonone'));
     }

@@ -24,9 +24,9 @@
 
                     <!-- Display fields for new course creation -->
                     <div class="form-group">
-                        <label for="course_id">Select Original Course</label>
+                        <label for="course_id">Select Course Type</label>
                         <select id="course_id" name="course_id" required>
-                            <option value="">-- Select Course --</option>
+                            <option value="">-- Select Course Type --</option>
                             @foreach ($courses as $course)
                                 <option value="{{ $course->id }}">{{ $course->title }}</option>
                             @endforeach

@@ -38,14 +38,6 @@
                         <input type="text" id="title" name="title" value="{{ old('name', $course->title) }}" required>
                     </div>
                     <div>
-                        <label for="category_id">Category</label>
-                <select id="category_id" name="category_id" required>
-                    @foreach($categories as $category)
-                        <option value="{{ $category->id }}" {{ $course->category_id == $category->id ? 'selected' : '' }}>
-                            {{ $category->name }}
-                        </option>
-                    @endforeach
-                </select>
                     </div>
                 </div>
                 
@@ -56,32 +48,9 @@
                     <textarea id="description" name="description" required>{{ old('description') }}</textarea>
                 </div>
 
-            <div class="form-group">
-                <div class = "two-col">
-                    <div>
-                        <label for="name">Minimum Price (USD)</label>
-                        <input type="text" id="min_price" name="min_price" value="{{ old('name', $course->min_price) }}" required>
-                    </div>
-                    <div>
-                        <label for="name">Maximum Price (USD)</label>
-                        <input type="text" id="max_price" name="max_price" value="{{ old('name', $course->max_price) }}" required>
-                    </div>
-                </div>
-                
-            </div>
+           
 
-            <div class="form-group">
-                <div class = "two-col">
-                    <div>
-                        <label for="img_url">Course Image</label>
-                        <input type="file" id="img_url" name="img_url">
-                    </div>
-                    <div>
-                        <img src="{{ asset($course->img_url) }}" alt="Course Image" class="image-preview">
-                    </div>
-                </div>
-                
-            </div>
+           
 
             <div class="form-group form-btn-wrapper">
                 <a href="{{ route('admin.courses') }}" class="btn btn-secondary">Cancel</a>
@@ -93,15 +62,6 @@
     </div>
 </div>
 
-<script>
-    tinymce.init({
-        selector: 'textarea#description',
-        menubar: false,
-        plugins: 'lists link image table',
-        toolbar: 'undo redo | formatselect | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image table',
-        height: 300
-    });
-</script>
 
 @endsection
 

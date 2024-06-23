@@ -8,7 +8,7 @@
                 <a href="/admin/dashboard" class="menu-item" id="menu-about">Dashboard</a>
                 <a href="/admin/mentor-request" class="menu-item" id="menu-courses">Mentor Requests</a>
                 <a href="/admin/mentors" class="menu-item" id="menu-mentor">Users</a>
-                <a href="/admin/courses" class="menu-item" id="menu-contact">Courses</a>
+                <a href="/admin/courses" class="menu-item" id="menu-contact">Course Types</a>
                 <a href="/admin/business" class="menu-item" id="menu-contact">Business</a>
             </div>
         @endif
