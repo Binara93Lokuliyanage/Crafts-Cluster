@@ -110,6 +110,7 @@ Route::post('/cart/pay', [StudentController::class, 'pay'])->name('cart.pay');
 // web.php
 
 Route::get('/student/purchased-courses', [StudentController::class, 'purchasedCourses'])->name('student.courses.purchased');
+Route::get('/courses/{course}', [PageViewController::class, 'show'])->name('courses.show');
 
 
 

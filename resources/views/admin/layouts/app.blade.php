@@ -21,6 +21,8 @@
     
     <link rel="stylesheet" type="text/css" href="{{ mix('css/app.css') }}?v1.6">
 
+    <script src="https://cdn.tiny.cloud/1/fai8b6mnpy5vgivulhi2f49vkukzbg5ood0p7yldkfr6ix8k/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
     <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/owl.theme.default.min.css') }}">
 

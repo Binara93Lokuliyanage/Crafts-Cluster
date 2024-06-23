@@ -20,8 +20,8 @@
                     <p>01236547898</p>
             </div>
             <div class = "footer-social-wrapper">
-                <a href = ""><img src="{{ asset('images/fb.png') }}" alt="Logo"></a>
-                <a href = ""><img src="{{ asset('images/ins.png') }}" alt="Logo"></a>
+                <a href = "https://www.facebook.com/profile.php?id=100066977493371" target = "_blank"><img src="{{ asset('images/fb.png') }}" alt="Logo"></a>
+                <a href = "https://www.instagram.com/crafts.cluster/" target = "_blank"><img src="{{ asset('images/ins.png') }}" alt="Logo"  ></a>
                 <a href = ""><img src="{{ asset('images/lin.png') }}" alt="Logo"></a>
                 <a href = ""><img src="{{ asset('images/wa.png') }}" alt="Logo"></a>
             </div>

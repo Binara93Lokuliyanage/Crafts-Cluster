@@ -48,9 +48,9 @@
             </div>
 
             <div class="form-group">
-                <label for="description">Description</label>
-                <textarea id="description" name="description" required>{{ old('description') }}</textarea>
-            </div>
+                    <label for="description">Description</label>
+                    <textarea id="description" name="description" required>{{ old('description') }}</textarea>
+                </div>
 
             <div class="form-group">
                 <div class="two-col">
@@ -85,6 +85,17 @@
     </div>
     </div>
 </div>
+
+<script>
+    tinymce.init({
+        selector: 'textarea#description',
+        menubar: false,
+        plugins: 'lists link image table',
+        toolbar: 'undo redo | formatselect | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image table',
+        height: 300
+    });
+</script>
+
 
 @endsection
 

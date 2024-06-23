@@ -51,8 +51,7 @@
                 <img src="{{ asset('images/d2.png') }}" alt="Logo">
             </div>
             <h4 class = "text-white">
-                Get Ready for<br>
-                The Next Career
+            Unleash<br>Your Creativity
             </h4>
         </div>
         <div class = "banner-divider__item">
@@ -60,8 +59,8 @@
                 <img src="{{ asset('images/d3.png') }}" alt="Logo">
             </div>
             <h4 class = "text-white">
-                Master at <br>
-                Different Areas
+                Master<br>
+                Your Craft
             </h4>
         </div>
     </section>
@@ -79,19 +78,24 @@
                 <div>
                     <div class="common-container__item-block">
                         @foreach($courses as $course)
-                            <div class="course-card">
+                        <a href="{{ route('courses.show', $course->id) }}" class="course-card">
                                 <div class="course-card__img-wrapper">
                                     <img src="{{ asset($course->img_url) }}" alt="{{ $course->title }}">
                                 </div>
                                 <div class="course-card__content-wrapper">
+                                    <div>
+                                        
                                     <h4 class="text-primary">
                                         {{ $course->title }}
                                     </h4>
+                                    <p class = "text-secondary">{{ $course->category->name }}</p>
+                                    </div>
+                                    
                                     <p>
                                         {{ Str::limit($course->description, 150) }} <!-- Limit description to 150 characters -->
                                     </p>
                                 </div>
-                            </div>
+</a>
                         @endforeach
                     </div>
                 </div>
@@ -114,7 +118,7 @@
                         </div>
                         <div class="our-mentor-card__text-wrapper">
                             <h4 class="text-primary">
-                                {{ $mentor->first_name }} {{ $mentor->last_name }}
+                                {{ $mentor->first_name }} 
                             </h4>
                             <p>
                                 {{ Str::limit($mentor->bio, 150) }} <!-- Assuming mentors have a bio field -->

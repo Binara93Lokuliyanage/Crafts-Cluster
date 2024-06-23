@@ -11,22 +11,26 @@ class PageViewController extends Controller
 {
     //
     public function showHomePage() {
-        $courses = Course::all(); // Fetch all courses
+        $courses = Course::with('category')->inRandomOrder()->take(3)->get();// Fetch all courses
         $mentors = Mentor::where('status', 'active')->inRandomOrder()->take(4)->get(); // Fetch 4 random active mentors
     
         return view('front.home', compact('courses', 'mentors'));
     }
     public function showAboutPage() {
 
-        return view('front.about');
+
+        $mentors = Mentor::where('status', 'active')->inRandomOrder()->take(4)->get(); // Fetch 4 random active mentors
+    
+        return view('front.about', compact('mentors'));
     }
     public function showCoursesPage() {
         // Assuming 'category' is a field in your 'courses' table that contains 'basic', 'intermediate', and 'advanced'
         $basicCourses = Course::where('category_id', '1')->get();
         $intermediateCourses = Course::where('category_id', '2')->get();
         $advancedCourses = Course::where('category_id', '3')->get();
+        $oneonone = Course::where('category_id', '4')->get();
     
-        return view('front.courses', compact('basicCourses', 'intermediateCourses', 'advancedCourses'));
+        return view('front.courses', compact('basicCourses', 'intermediateCourses', 'advancedCourses', 'oneonone'));
     }
     public function showMentorPage() {
 
@@ -36,4 +40,10 @@ class PageViewController extends Controller
     public function showContactPage() {
         return view('front.contact');
     }
+
+    public function show(Course $course)
+{
+    return view('front.show', compact('course'));
+}
+
 }

@@ -137,73 +137,29 @@
 </section>
 
 <section class = "section-padding-top section-padding-bottom">
-    <div class = "container">
-        <h2 class = "gradient-text">Our Mentors</h2>
-        
-        <div class = "our-mentors-cards-wrapper">
-            <div class = "our-mentors-card">
-                <div class = "our-mentor-card__img-wrapper">
-                    <img src="{{ asset('images/mentor.png') }}" alt="Logo">
-                </div>
-                <div class = "our-mentor-card__text-wrapper">
-                    <h4 class = "text-primary">
-                        Mentor Name
-                    </h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nec est at libero ullamcorper sodales.</p>
-                            <h3 class = "text-secondary" style="text-align: right">
-                                4.7
-                            </h3>
-                </div>
+        <div class = "container">
+            <h2 class = "gradient-text">Our Mentors</h2>
+            
+            <div class="our-mentors-cards-wrapper">
+                @foreach($mentors as $mentor)
+                    <div class="our-mentors-card">
+                        <div class="our-mentor-card__img-wrapper" style="background-color: aliceblue">
+                            <img src="{{ asset($mentor->picture_url) }}" alt="{{ $mentor->first_name }} {{ $mentor->last_name }}">
+                        </div>
+                        <div class="our-mentor-card__text-wrapper">
+                            <h4 class="text-primary">
+                                {{ $mentor->first_name }} 
+                            </h4>
+                            <p>
+                                {{ Str::limit($mentor->bio, 150) }} <!-- Assuming mentors have a bio field -->
+                            </p>
+                        </div>
+                    </div>
+                @endforeach
             </div>
-
-            <div class = "our-mentors-card">
-                <div class = "our-mentor-card__img-wrapper">
-                    <img src="{{ asset('images/mentor.png') }}" alt="Logo">
-                </div>
-                <div class = "our-mentor-card__text-wrapper">
-                    <h4 class = "text-primary">
-                        Mentor Name
-                    </h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nec est at libero ullamcorper sodales.</p>
-                            <h3 class = "text-secondary" style="text-align: right">
-                                4.7
-                            </h3>
-                </div>
-            </div>
-
-            <div class = "our-mentors-card">
-                <div class = "our-mentor-card__img-wrapper">
-                    <img src="{{ asset('images/mentor.png') }}" alt="Logo">
-                </div>
-                <div class = "our-mentor-card__text-wrapper">
-                    <h4 class = "text-primary">
-                        Mentor Name
-                    </h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nec est at libero ullamcorper sodales.</p>
-                            <h3 class = "text-secondary" style="text-align: right">
-                                4.7
-                            </h3>
-                </div>
-            </div>
-
-            <div class = "our-mentors-card">
-                <div class = "our-mentor-card__img-wrapper">
-                    <img src="{{ asset('images/mentor.png') }}" alt="Logo">
-                </div>
-                <div class = "our-mentor-card__text-wrapper">
-                    <h4 class = "text-primary">
-                        Mentor Name
-                    </h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nec est at libero ullamcorper sodales.</p>
-                            <h3 class = "text-secondary" style="text-align: right">
-                                4.7
-                            </h3>
-                </div>
-            </div>
+            
         </div>
-        
-    </div>
-</section>
+    </section>
 
 <section class = "divider-section">
     <img src="{{ asset('images/divider.png') }}" alt="Logo">

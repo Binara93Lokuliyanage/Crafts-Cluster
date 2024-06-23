@@ -80,5 +80,5 @@
 </section>
 
 
-@include('front.components.testimonials')
+
 @endsection

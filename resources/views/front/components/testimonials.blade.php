@@ -3,10 +3,8 @@
         <div class = "common-container">
             <div class = "common-container__text-block">
                 <h2 class = "gradient-text">Student Testimonials</h2>
-                <p>Unlock your creativity with our comprehensive range of craft courses designed for all skill levels. Whether you’re a beginner eager to learn the basics or an experienced crafter looking to refine your techniques, our expertly curated courses offer something for everyone.</p>
-                <a href = "/courses" class = "btn-primary">
-                    All Courses
-                </a>
+                <p>Hear from our vibrant community of learners about how our courses have transformed their crafting skills and ignited their creativity. Whether you're just starting out or have years of experience, our comprehensive range of courses, designed for all skill levels, provides the perfect platform for your creative journey.</p>
+                
             </div>
             <div style="overflow: hidden">
                 <div class="">
