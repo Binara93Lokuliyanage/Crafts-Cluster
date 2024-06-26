@@ -2,10 +2,15 @@
 
 namespace App\Http\Controllers\Front;
 
+use App\Http\Controllers\Back\StudentController;
 use App\Http\Controllers\Controller;
 use App\Models\Course;
 use App\Models\Mentor;
 use App\Models\MentorCourse;
+use App\Models\Student;
+use App\Models\StudentWallet;
+use App\Models\User;
+use Auth;
 use Illuminate\Http\Request;
 
 class PageViewController extends Controller
@@ -42,9 +47,23 @@ class PageViewController extends Controller
         return view('front.contact');
     }
 
-    public function show(Course $course)
-{
-    return view('front.show', compact('course'));
-}
+    public function show($mentorCourseId)
+    {
+        $mentorCourse = MentorCourse::with('mentorCourseLessons')->findOrFail($mentorCourseId);
+        $user = Auth::user();
+        $student = Student::where('user_id', $user->id)->first();
+        $studentWallet = StudentWallet::where('student_id', $student->id)->first();
+
+
+        $userId = auth()->id();
+        $user = User::find($userId);
+        $userType = $user->type;
+
+        return view('front.show', [
+            'mentorCourse' => $mentorCourse,
+            'studentWallet' => $studentWallet,
+            'userType' => $userType
+        ]);
+    }
 
 }

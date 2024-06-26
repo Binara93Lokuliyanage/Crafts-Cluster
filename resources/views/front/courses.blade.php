@@ -14,7 +14,7 @@
         
         <div class="our-mentors-cards-wrapper">
             @foreach($basicCourses as $course)
-                <div class="course-card">
+                <a href = "{{ route('courses.show', $course->id) }}" class="course-card">
                     <div class="course-card__img-wrapper">
                         <img src="{{ asset($course->img_url) }}" alt="{{ $course->title }}">
                     </div>
@@ -22,7 +22,7 @@
                         <h4 class="text-primary">{{ $course->title }}</h4>
                         <p>{{ $course->description }}</p>
                     </div>
-                </div>
+                </a>
             @endforeach
         </div>
         
@@ -36,7 +36,7 @@
     Perfect for those new to crafting, our beginner courses cover the essential skills and techniques. Step-by-step guidance and hands-on projects will help you build a solid foundation and gain confidence in your abilities.</p>
         <div class="our-mentors-cards-wrapper">
             @foreach($intermediateCourses as $course)
-                <div class="course-card">
+                <a href = " {{ route('courses.show', $course->id) }}" class="course-card">
                     <div class="course-card__img-wrapper">
                         <img src="{{ asset($course->img_url) }}" alt="{{ $course->title }}">
                     </div>
@@ -44,7 +44,7 @@
                         <h4 class="text-primary">{{ $course->title }}</h4>
                         <p>{{ $course->description }}</p>
                     </div>
-                </div>
+                </a>
             @endforeach
         </div>
         
@@ -58,7 +58,7 @@
     Designed for experienced crafters, our advanced courses delve deeper into complex techniques and intricate projects. Learn from experts, challenge yourself, and elevate your crafting to professional levels.</p>
         <div class="our-mentors-cards-wrapper">
             @foreach($advancedCourses as $course)
-                <div class="course-card">
+                <a href = " {{ route('courses.show', $course->id) }}" class="course-card">
                     <div class="course-card__img-wrapper">
                         <img src="{{ asset($course->img_url) }}" alt="{{ $course->title }}">
                     </div>
@@ -66,7 +66,7 @@
                         <h4 class="text-primary">{{ $course->title }}</h4>
                         <p>{{ $course->description }}</p>
                     </div>
-                </div>
+                </a>
             @endforeach
         </div>
         
@@ -80,7 +80,7 @@
     Receive individualized attention and tailored instruction through our one-to-one program. Work closely with a mentor to refine your skills, get personalized feedback, and achieve your unique creative goals.</p>
         <div class="our-mentors-cards-wrapper">
             @foreach($oneonone as $course)
-                <div class="course-card">
+                <a href = " {{ route('courses.show', $course->id) }}" class="course-card">
                     <div class="course-card__img-wrapper">
                         <img src="{{ asset($course->img_url) }}" alt="{{ $course->title }}">
                     </div>
@@ -88,7 +88,7 @@
                         <h4 class="text-primary">{{ $course->title }}</h4>
                         <p>{{ $course->description }}</p>
                     </div>
-                </div>
+                </a>
             @endforeach
         </div>
         
