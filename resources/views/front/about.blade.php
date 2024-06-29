@@ -18,11 +18,11 @@
                 <div class = "common-container__two-col-block">
                     <div class = "two-col-card">
                         <h3 class = "text-primary">Our Vision</h3>
-                        <p class = "text-center">Our vision is to become the leading online destination for craft education, where creativity knows no bounds. We envision a world where people of all ages and backgrounds can explore their artistic passions, develop new skills, and share their creations with a global community. Through innovation and dedication, we aspire to make crafting an integral part of everyone’s life.</p>
+                        <p class = "text-center mission-text">Our vision is to become the leading online destination for craft education, where creativity knows no bounds. We envision a world where people of all ages and backgrounds can explore their artistic passions, develop new skills, and share their creations with a global community. Through innovation and dedication, we aspire to make crafting an integral part of everyone’s life.</p>
                     </div>
                     <div class = "two-col-card">
                         <h3 class = "text-primary">Our Mission</h3>
-                        <p class = "text-center">Our mission is to inspire and nurture creativity in every individual. We aim to provide accessible, high-quality craft education that encourages lifelong learning and artistic expression. By connecting learners with expert instructors and a supportive community, we strive to foster an environment where creativity can flourish.</p>
+                        <p class = "text-center mission-text"">Our mission is to inspire and nurture creativity in every individual. We aim to provide accessible, high-quality craft education that encourages lifelong learning and artistic expression. By connecting learners with expert instructors and a supportive community, we strive to foster an environment where creativity can flourish.</p>
                     </div>
                     
                 </div>

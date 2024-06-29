@@ -45,7 +45,7 @@
                     <div>
                         <x-label for="last_name" :value="__('Last Name')" />
         
-                        <x-input id="last_name" class="block mt-1 w-full" type="text" name="last_name" :value="old('name')" required />
+                        <x-input id="last_name" class="block mt-1 w-full" type="text" name="last_name" :value="old('last_name')" required />
                     </div>
                 </div>
             </div>
@@ -62,7 +62,7 @@
             <div class="mt-4">
                 <x-label for="material_file" :value="__('Upload Profile Picture')" />
             
-                <x-input id="material_file" class="block mt-1 w-full" type="file" name="material_file"  />
+                <x-input id="material_file" class="block mt-1 w-full" type="file" name="material_file"  required />
             </div>
                 </div>
             </div>

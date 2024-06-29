@@ -50,19 +50,10 @@ class PageViewController extends Controller
     public function show($mentorCourseId)
     {
         $mentorCourse = MentorCourse::with('mentorCourseLessons')->findOrFail($mentorCourseId);
-        $user = Auth::user();
-        $student = Student::where('user_id', $user->id)->first();
-        $studentWallet = StudentWallet::where('student_id', $student->id)->first();
-
-
-        $userId = auth()->id();
-        $user = User::find($userId);
-        $userType = $user->type;
+       
 
         return view('front.show', [
-            'mentorCourse' => $mentorCourse,
-            'studentWallet' => $studentWallet,
-            'userType' => $userType
+            'mentorCourse' => $mentorCourse
         ]);
     }
 

@@ -926,6 +926,10 @@ select:focus-visible {
     gap: 2rem;
     margin-top: 2rem;
 
+    @media screen and (max-width: 750px) {
+        grid-template-columns: 1fr;
+    }
+
     .purchase-tag {
         display: flex;
         justify-content: space-between;
@@ -1203,3 +1207,10 @@ select:focus-visible {
     object-fit: cover;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap');
+
+.mission-text {
+    font-family: "Roboto Slab", serif;
+    font-optical-sizing: auto;
+    text-align: justify;
+}
