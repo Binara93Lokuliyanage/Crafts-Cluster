@@ -47,6 +47,13 @@ Route::get('/courses', [PageViewController::class, 'showCoursesPage']);
 Route::get('/mentor', [PageViewController::class, 'showMentorPage']);
 Route::get('/contact', [PageViewController::class, 'showContactPage']);
 
+Route::post('/submit-form', function () {
+    // Here you can handle any form processing if needed
+    return redirect('/thank-you');
+});
+
+Route::get('/thank-you', [PageViewController::class, 'showThanksPage']);
+
 Route::get('/dashboard', function () {
     $user = Auth::user();
     $userType = $user->type;

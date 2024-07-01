@@ -47,6 +47,10 @@ class PageViewController extends Controller
         return view('front.contact');
     }
 
+    public function showThanksPage() {
+        return view('front.thank-you');
+    }
+
     public function show($mentorCourseId)
     {
         $mentorCourse = MentorCourse::with('mentorCourseLessons')->findOrFail($mentorCourseId);

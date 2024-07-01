@@ -16,7 +16,7 @@
             </div>
             <div>
                 <div class = "common-container__form-block">
-                    <form action="" method="POST" enctype="multipart/form-data">
+                    <form action="{{ url('/submit-form') }}" method="POST" enctype="multipart/form-data">
                         @csrf
             
                         <div class="form-group">
