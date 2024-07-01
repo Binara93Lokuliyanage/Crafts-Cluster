@@ -43,6 +43,11 @@ class PageViewController extends Controller
         return view('front.become-a-mentor');
     }
 
+    public function showMemberPage() {
+
+        return view('front.member');
+    }
+
     public function showContactPage() {
         return view('front.contact');
     }

@@ -46,6 +46,7 @@ Route::get('/about', [PageViewController::class, 'showAboutPage']);
 Route::get('/courses', [PageViewController::class, 'showCoursesPage']);
 Route::get('/mentor', [PageViewController::class, 'showMentorPage']);
 Route::get('/contact', [PageViewController::class, 'showContactPage']);
+Route::get('/member', [PageViewController::class, 'showMemberPage']);
 
 Route::post('/submit-form', function () {
     // Here you can handle any form processing if needed
