@@ -48,7 +48,7 @@
                                 </a>
                             </div>
                         @endif
-                            <h3>$ {{ $mentorCourse->price }}</h3>
+                            <h3>CA$ {{ $mentorCourse->price }}</h3>
                         </div>
                     </div>
                     <div class = "cart-item__lessons-overview">

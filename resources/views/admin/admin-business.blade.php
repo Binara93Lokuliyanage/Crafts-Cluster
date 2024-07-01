@@ -39,15 +39,15 @@
             <div class="container wallet-container">
                 <div class="wallet-block">
                     <h4 class="text-primary">Income for This Month</h4>
-                    <h2>@currency($lastMonthIncome)</h2>
+                    <h2 style = "font-size: 2em; margin-top: 2rem;">@currency($lastMonthIncome)</h2>
                 </div>
                 <div class="wallet-block">
                     <h4 class="text-primary">Income for Last Month</h4>
-                    <h2>@currency($lastMonthIncomereal)</h2>
+                    <h2 style = "font-size: 2em; margin-top: 2rem;">@currency($lastMonthIncomereal)</h2>
                 </div>
                 <div class="wallet-block">
                     <h4 class="text-primary">Overall Income</h4>
-                    <h2>@currency($totalIncome)</h2>
+                    <h2 style = "font-size: 2em; margin-top: 2rem;">@currency($totalIncome)</h2>
                 </div>
             </div>
         </div>

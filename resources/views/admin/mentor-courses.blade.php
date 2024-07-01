@@ -44,7 +44,7 @@
                                 {{ $mentorCourse->description }}
                             </p>
                             <h3 class = "price-tag">
-                                $ {{ $mentorCourse->price }}
+                                CA$ {{ $mentorCourse->price }}
                             </h3>
                         </div>
                     </a>

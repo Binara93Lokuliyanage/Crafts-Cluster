@@ -6,15 +6,15 @@
         <div class="container wallet-container">
             <div class="wallet-block">
                 <h4 class="text-primary">Total Spent</h4>
-                <h2>@currency($wallet->total_spent)</h2>
+                <h2 style = "font-size: 2em; margin-top: 2rem;">@currency($wallet->total_spent)</h2>
             </div>
             <div class="wallet-block">
                 <h4 class="text-primary">Remaining Balance</h4>
-                <h2>@currency($wallet->remaining_amount)</h2>
+                <h2 style = "font-size: 2em; margin-top: 2rem;">@currency($wallet->remaining_amount)</h2>
             </div>
             <div class="wallet-block">
                 <h4 class="text-primary">Low Balance?</h4>
-                <a href="#" id="top-up-link">Top up now</a>
+                <a href="#" id="top-up-link" style = "font-size: 2em">Top up now</a>
             </div>
         </div>
         

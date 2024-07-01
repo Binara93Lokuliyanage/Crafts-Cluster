@@ -40,7 +40,7 @@
                                 <div class = "purchase-tag">
                                     <a href="{{ route('cart.show', $mentorCourse->id) }}" class="purchase-btn">Purchase</a>
                                     <h3 >
-                                        $ {{ $mentorCourse->price }}
+                                        CA$ {{ $mentorCourse->price }}
                                     </h3>
                                 </div>
                                 

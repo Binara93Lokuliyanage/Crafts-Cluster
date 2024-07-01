@@ -29,7 +29,7 @@ class AppServiceProvider extends ServiceProvider
         //
         Schema::defaultStringLength(191);
         Blade::directive('currency', function ($amount) {
-            return "<?php echo '$' . number_format($amount, 2); ?>";
+            return "<?php echo 'CA$' . number_format($amount, 2); ?>";
         });
     }
 }
